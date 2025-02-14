@@ -28,6 +28,6 @@ createInertiaApp({
         delay: 250,
         color: '#fff',
         includeCSS: true,
-        showSpinner: false,
+        showSpinner: true,
     },
 })

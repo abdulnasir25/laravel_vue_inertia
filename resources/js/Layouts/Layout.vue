@@ -10,9 +10,15 @@ import { route } from '../../../vendor/tightenco/ziggy/src/js';
         <header class="bg-gray-800 text-white p-4">
             <nav class="container mx-auto flex justify-between items-center">
                 <div class="text-2xl font-bold space-x-4">
-                    <Link :href="route('home')">Home</Link>
-                    <Link :href="route('about')">About</Link>
-                    <Link :href="route('contact')">Contact</Link>
+                    <Link :href="route('home')" class="nav-link hover:underline">Home</Link>
+                </div>
+
+                <div class="text-2xl font-bold space-x-4">
+                    <Link :href="route('login')" class="nav-link hover:underline">Login</Link>
+                </div>
+
+                <div class="text-2xl font-bold space-x-4">
+                    <Link :href="route('register')" class="nav-link hover:underline">Register</Link>
                 </div>
             </nav>
         </header>
