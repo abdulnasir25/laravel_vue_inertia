@@ -1,11 +1,11 @@
 <script setup>
-    import Layout from '@/Layouts/Layout.vue';
-    import { defineProps } from 'vue';
-    const props = defineProps();
 </script>
 
 <template>
-    <Layout>
+    <Head>
+        <title>Home</title>
+    </Head>
+    <div class="container mx-auto p-4">
         <h1 class="">Home Page</h1>
-    </Layout>
+    </div>
 </template>
