@@ -1,18 +1,12 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
-// 1st approach to use render page
-Route::get('/', function () {
-    sleep(1);
-    return Inertia::render('Home');
-})->name('home');
+Route::inertia('/', 'Home')->name('home');
 
-// 2nd approach to use render page
-Route::get('/about', function () {
-    return inertia('About', ['name' => 'Nasir Shah']);
-})->name('about');
+Route::inertia('/register', 'Auth/Register')->name('register');
+Route::post('/register', [AuthController::class, 'register'])->name('register.attempt');
 
-// 3rd approach to use render page
-Route::inertia('/contact', 'Contact', ['name' => 'Nasir Shah'])->name('contact');
+Route::inertia('/login', 'Auth/Login')->name('login');
