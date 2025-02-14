@@ -5,6 +5,7 @@ use Inertia\Inertia;
 
 // 1st approach to use render page
 Route::get('/', function () {
+    sleep(2);
     return Inertia::render('Home');
 });
 
