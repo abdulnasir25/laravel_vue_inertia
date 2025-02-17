@@ -15,6 +15,8 @@ import { route } from '../../../vendor/tightenco/ziggy/src/js';
 
                 <div v-if="$page.props.auth.user">
                     <div class="text-2xl font-bold space-x-6">
+                        <img class="float-left w-10 h-10 rounded-full" :src="$page.props.auth.user.avatar ? ('storage/' + $page.props.auth.user.avatar) : ('storage/avatars/default.jpeg')" alt="User Avatar" />
+
                         <Link :href="route('dashboard')" class="nav-link hover:underline" :class="{ 'underline' : $page.component === 'Dashboard'}">Dashboard</Link>
 
                         <Link :href="route('logout')" method="post" as="button" type="button" class="nav-link hover:underline">Logout</Link>
