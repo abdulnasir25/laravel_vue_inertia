@@ -9,8 +9,15 @@ const form = useForm({
     name: null,
     email: null,
     password: null,
-    password_confirmation: null
+    password_confirmation: null,
+    avatar: null,
+    preview: null
 });
+
+const change = (e) => {
+    form.avatar = e.target.files[0];
+    form.preview = URL.createObjectURL(e.target.files[0]);
+}
 
 const submit = () => {
     console.log(form);
@@ -31,6 +38,19 @@ const submit = () => {
 
     <div class="w-2/4 mx-auto mt-8 bg-gray-100 p-4 rounded">
         <form @submit.prevent="submit">
+            <div class="grid place-items-center">
+                <div class="relative w-28 h-28 rounded-full overflow-hidden border border-slate-300 mx-auto">
+                    <label for="avatar" class="absolute inset-0 grid content-end cursor-pointer">
+                        <span class="bg-white/70 pb-2 text-center">Avatar</span>
+                    </label>
+                    <input type="file" name="avatar" id="avatar" ref="fileInput" @input.change="change" hidden />
+
+                    <img class="object-cover w-28 h-28" :src="form.preview ?? 'storage/avatars/default.jpeg'" alt="">
+                </div>
+
+                <p v-if="form.errors.avatar" class="text-red-500 text-xs mt-1">{{ form.errors.avatar }}</p>
+            </div>
+
             <TextInput name="name" v-model="form.name" :message="form.errors.name" />
 
             <TextInput type="email" name="email" v-model="form.email" :message="form.errors.email" />
