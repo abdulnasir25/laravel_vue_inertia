@@ -15,21 +15,11 @@ const form = useForm({
 const submit = () => {
     console.log(form);
 
-    form.post(route('register'), {
+    form.post(route('register.attempt'), {
         preserveScroll: true,
-        // onSuccess: () => {
-        //     console.log('success');
-
-        //     form.reset();
-        //     form.clearErrors();
-
-        //     if (fileInput.value) {
-        //         fileInput.value = null;
-        //     }
-        // },
         onError: (errors) => {
             console.log(errors);
-            form.reset('password', 'password_confirmation'); // reset password fields
+            form.reset('password', 'password_confirmation');
         }
     });
 }
@@ -50,7 +40,7 @@ const submit = () => {
             <TextInput type="password" name="password_confirmation" v-model="form.password_confirmation" />
 
             <div class="my-4 flex flex-col text-gray-800">
-                <p>Already have an account? <Link class="underline" href="#">Login</Link></p>
+                <p>Already have an account? <Link class="underline" :href="route('login')">Login</Link></p>
             </div>
 
             <!-- and disable button if form is processing -->
