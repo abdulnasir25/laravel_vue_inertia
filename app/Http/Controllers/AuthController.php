@@ -32,7 +32,7 @@ class AuthController extends Controller
 
         Auth::login($user);
 
-        return redirect()->route('dashboard');
+        return redirect()->route('dashboard')->with('success','Welcome to the family!');
     }
 
     public function login(Request $request)
