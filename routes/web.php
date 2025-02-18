@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function(Request $request) {
@@ -13,6 +14,12 @@ Route::get('/', function(Request $request) {
         })->paginate(5)->withQueryString(), // used to keep the search query in the URL, so that when we navigate to another page, the search query is still there.
 
         'searchTerm' => $request->search,
+
+        'can' => [
+            'delete_users' =>
+                Auth::user() ?
+                    Auth::user()->can('delete', User::class) : false,
+        ],
     ]);
 })->name('home');
 
