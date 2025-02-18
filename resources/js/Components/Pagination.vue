@@ -27,7 +27,7 @@ const makeLabel = (label) => {
                     :is="link.url ? 'Link' : 'span'"
                     :href="link.url"
                     v-html="makeLabel(link.label)"
-                    class="border-x border-slate-50 w-20 h-14 grid place-items-center bg-white"
+                    class="border-x border-slate-50 w-16 h-14 grid place-items-center bg-white"
                     :class="{
                         'hover:bg-slate-300' : link.active,
                         'text-zinc-400' : !link.url,
